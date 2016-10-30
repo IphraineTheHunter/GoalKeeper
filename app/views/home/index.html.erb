@@ -9,3 +9,8 @@
     <%= f.submit "Create Daily Goal" %>
   </div>
 <% end %>
+
+<% @user.recurring_goals.each do |goal| %>
+	<h6><%= goal.name%></h6>
+
+<% end %>
