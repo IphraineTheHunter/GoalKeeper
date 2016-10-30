@@ -1,0 +1,2 @@
+module RecurringGoalHelper
+end

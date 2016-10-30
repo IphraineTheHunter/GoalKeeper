@@ -1,0 +1,16 @@
+<%= form_for [@user, @recurring_goal] do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Daily Goal" %>
+  </div>
+<% end %>
+
+<% @user.recurring_goals.each do |goal| %>
+	<h6><%= goal.name%></h6>
+
+<% end %>

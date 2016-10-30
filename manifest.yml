@@ -1,0 +1,6 @@
+---
+applications:
+- name: GoalKeeper
+  memory: 128M
+  buildpack: ruby_buildpack
+  command: bundle exec rake db:migrate && bundle exec rails s -p $PORT -e $RAILS_ENV
