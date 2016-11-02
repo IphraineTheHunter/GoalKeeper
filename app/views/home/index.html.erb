@@ -1,1 +1,5 @@
-hello person
+<% if user_signed_in? %>
+  Hello <%= current_user.name %>
+<% else %>
+  Welcome to GoalKeeper!
+<% end %>
