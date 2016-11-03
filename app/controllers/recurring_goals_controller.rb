@@ -10,9 +10,4 @@ class RecurringGoalsController < ApplicationController
     redirect_to :back
   end
 
-# For quick reference when working with resque
-#  def resetGoals
-#    RecurringGoal.update_all(completed: "false")
-#  end
-
 end
