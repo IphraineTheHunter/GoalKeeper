@@ -25,3 +25,10 @@ s.cron '1 * * * 1' do
      weekly.update(completed: "false")
    end
 end
+
+# first minute after midnight on the first of every month
+s.cron '1 0 1 * *' do
+  RecurringGoal.where(goal_type: 'Monthly').find_each do |monthly|
+    monthly.update(completed: "false")
+  end
+end
