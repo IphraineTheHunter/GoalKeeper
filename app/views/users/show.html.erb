@@ -3,6 +3,7 @@
   <div class="field">
     <%= f.label :"Name of new Goal" %><br />
     <%= f.text_field :name, required: true %>
+    <%= f.select :goal_type, ["Daily", "Weekly"] %>
   </div>
 
   <div class="actions">
@@ -16,7 +17,8 @@
 <% @user.recurring_goals.each do |goal| %>
   <h4><%= goal.name %></h4>
   <div class="field">
-    <h6> Status: <%= goal.completed ? "Complete" : "Incomplete" %> </h6>
+    <h6> Status: <%= goal.completed ? "Complete" : "Incomplete" %> <br />
+      Type: <%= goal.goal_type %></h6>
     <% if goal.completed == false %>
     <a href="/users/<%= current_user.id %>/recurring_goals/<%= goal.id %>/">
       Complete
