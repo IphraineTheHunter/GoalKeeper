@@ -51,4 +51,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # The Rufus task scheduler
 gem 'rufus-scheduler'
-gem 'resque'
