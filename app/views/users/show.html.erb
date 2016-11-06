@@ -1,28 +1,75 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
+			<div class="repeating-goals col-sm-12">
+				<h3>Recurring Goals</h3>
+				
+				<div class="row">
+					<button class="col-sm-4 select-goal-type daily selected">Daily</button>
+					<button class="col-sm-4 select-goal-type weekly">Weekly</button>
+					<button class="col-sm-4 select-goal-type monthly">Monthly</button>
+				</div>
+				
+				<!-- refactor these into partials -->
+				<div class="row daily recurring-goals">
+					<% @user.recurring_goals.where(goal_type: 'Daily').each do |goal| %>
+						<div class=" col-sm-4">
+							<div class="card">
+								<h4><%= goal.name %></h4>
+							    <% if goal.completed == false %>
+							    	<a href="/users/<%= current_user.id %>/recurring_goals/<%= goal.id %>/"
+							    		class="glyphicon glyphicon-unchecked btn-lg"></a>
+							    <% else %>
+							    	<span class="glyphicon glyphicon-ok btn-lg"/>
+							    <% end %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+				<div class="row weekly hidden recurring-goals">
+					<% @user.recurring_goals.where(goal_type: 'Weekly').each do |goal| %>
+						<div class=" col-sm-4">
+							<div class="card">
+								<h4><%= goal.name %></h4>
+							    <% if goal.completed == false %>
+							    	<a href="/users/<%= current_user.id %>/recurring_goals/<%= goal.id %>/"
+							    		class="glyphicon glyphicon-unchecked btn-lg"></a>
+							    <% else %>
+							    	<span class="glyphicon glyphicon-ok btn-lg"/>
+							    <% end %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+				<div class="row monthly hidden recurring-goals">
+					<% @user.recurring_goals.where(goal_type: 'Monthly').each do |goal| %>
+						<div class=" col-sm-4">
+							<div class="card">
+								<h4><%= goal.name %></h4>
+							    <% if goal.completed == false %>
+							    	<a href="/users/<%= current_user.id %>/recurring_goals/<%= goal.id %>/"
+							    		class="glyphicon glyphicon-unchecked btn-lg"></a>
+							    <% else %>
+							    	<span class="glyphicon glyphicon-ok btn-lg"/>
+							    <% end %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <%= form_for [@user, @recurring_goal] do |f| %>
+	
+	<div class="field">
+		<%= f.label :"Name of new Goal" %><br />
+		<%= f.text_field :name, required: true %>
+		<%= f.select :goal_type, ["Daily", "Weekly", "Monthly"] %>
+	</div>
 
-  <div class="field">
-    <%= f.label :"Name of new Goal" %><br />
-    <%= f.text_field :name, required: true %>
-    <%= f.select :goal_type, ["Daily", "Weekly", "Monthly"] %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Create Daily Goal" %>
-  </div>
-<% end %>
-
-<h1>Current Goals</h1>
-<hr>
-
-<% @user.recurring_goals.each do |goal| %>
-  <h4><%= goal.name %></h4>
-  <div class="field">
-    <h6> Status: <%= goal.completed ? "Complete" : "Incomplete" %> <br />
-      Type: <%= goal.goal_type %></h6>
-    <% if goal.completed == false %>
-    <a href="/users/<%= current_user.id %>/recurring_goals/<%= goal.id %>/">
-      Complete
-    </a>
-    <% end %>
-  </div>
+	<div class="actions">
+		<%= f.submit "Create Daily Goal" %>
+	</div>
 <% end %>
