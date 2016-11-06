@@ -1,4 +1,4 @@
-window.onload = function(){
+function recurringGoals(){
 	var dailyButton = $(".daily.recurring-goals");
 	$(".daily.select-goal-type").click(function(){switchToGoalType('daily');});
 	$(".weekly.select-goal-type").click(function(){switchToGoalType('weekly');});
