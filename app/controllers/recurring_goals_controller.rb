@@ -1,7 +1,13 @@
 class RecurringGoalsController < ApplicationController
 
   def show
-    RecurringGoal.find(params[:id]).update completed: true
+    goal = RecurringGoal.find(params[:id])
+    if (params[:name])
+      goal.update name: params[:name]
+    end
+    if (params[:completed])
+      goal.update completed: params[:completed]
+    end
     redirect_to :back
   end
 
