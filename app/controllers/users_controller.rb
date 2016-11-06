@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :validate_user
 
   def show
-    @user = User.find(:id)
+    @user = User.find(params[:id])
     @recurring_goal = RecurringGoal.new
   end
 
