@@ -11,51 +11,9 @@
 				</div>
 				
 				<!-- refactor these into partials -->
-				<div class="row daily recurring-goals">
-					<% @user.recurring_goals.where(goal_type: 'Daily').each do |goal| %>
-						<div class=" col-sm-4">
-							<div class="card">
-								<h4><%= goal.name %></h4>
-							    <% if goal.completed == false %>
-							    	<a href="/users/<%= current_user.id %>/recurring_goals/<%= goal.id %>/"
-							    		class="glyphicon glyphicon-unchecked btn-lg"></a>
-							    <% else %>
-							    	<span class="glyphicon glyphicon-ok btn-lg"/>
-							    <% end %>
-							</div>
-						</div>
-					<% end %>
-				</div>
-				<div class="row weekly hidden recurring-goals">
-					<% @user.recurring_goals.where(goal_type: 'Weekly').each do |goal| %>
-						<div class=" col-sm-4">
-							<div class="card">
-								<h4><%= goal.name %></h4>
-							    <% if goal.completed == false %>
-							    	<a href="/users/<%= current_user.id %>/recurring_goals/<%= goal.id %>/"
-							    		class="glyphicon glyphicon-unchecked btn-lg"></a>
-							    <% else %>
-							    	<span class="glyphicon glyphicon-ok btn-lg"/>
-							    <% end %>
-							</div>
-						</div>
-					<% end %>
-				</div>
-				<div class="row monthly hidden recurring-goals">
-					<% @user.recurring_goals.where(goal_type: 'Monthly').each do |goal| %>
-						<div class=" col-sm-4">
-							<div class="card">
-								<h4><%= goal.name %></h4>
-							    <% if goal.completed == false %>
-							    	<a href="/users/<%= current_user.id %>/recurring_goals/<%= goal.id %>/"
-							    		class="glyphicon glyphicon-unchecked btn-lg"></a>
-							    <% else %>
-							    	<span class="glyphicon glyphicon-ok btn-lg"/>
-							    <% end %>
-							</div>
-						</div>
-					<% end %>
-				</div>
+				<%= render partial: 'recurring_goals', locals: {user: @user, goal_type: 'daily', hidden: ''} %>
+				<%= render partial: 'recurring_goals', locals: {user: @user, goal_type: 'weekly', hidden: 'hidden'} %>
+				<%= render partial: 'recurring_goals', locals: {user: @user, goal_type: 'monthly', hidden: 'hidden'} %>
 			</div>
 		</div>
 	</div>

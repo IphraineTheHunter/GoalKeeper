@@ -1,0 +1,15 @@
+<div class="row recurring-goals <%=goal_type%> <%=hidden%>" >
+	<% @user.recurring_goals.where(goal_type: goal_type.capitalize).each do |goal| %>
+		<div class=" col-sm-4">
+			<div class="card">
+				<h4><%= goal.name %></h4>
+			    <% if goal.completed == false %>
+			    	<a href="/users/<%= user.id %>/recurring_goals/<%= goal.id %>/"
+			    		class="glyphicon glyphicon-unchecked btn-lg"></a>
+			    <% else %>
+			    	<span class="glyphicon glyphicon-ok btn-lg"/>
+			    <% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
