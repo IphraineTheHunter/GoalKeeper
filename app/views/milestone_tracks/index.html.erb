@@ -1,0 +1,10 @@
+<%= form_for [@user, @milestone_track] do |f| %>
+	<div class="field">
+		<%= f.label :"Name of new Milestone track" %><br />
+		<%= f.text_field :name, required: true %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit "Create new track" %>
+	</div>
+<% end %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :users do
     resources :recurring_goals
+    resources :milestone_tracks
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

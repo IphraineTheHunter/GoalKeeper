@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = User.create(name: 'Lily Johansen', email: 'lily.johansen@example.com', password: 'password')
+user.recurring_goals.create(name: 'Jog 1 mile', goal_type: 'Daily', completed: true)
+user.recurring_goals.create(name: 'Swim for 1 hour', goal_type: 'Weekly', completed: false)
+user.recurring_goals.create(name: 'Do endurance run', goal_type: 'Monthly', completed: false)
