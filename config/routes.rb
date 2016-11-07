@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get 'milestones/create'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   root "home#index"
   resources :users do
     resources :recurring_goals
     resources :milestone_tracks
+  end
+
+  resources :milestone_tracks do
+      resources :milestones
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

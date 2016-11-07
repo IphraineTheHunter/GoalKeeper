@@ -1,3 +1,16 @@
+<%= form_for [@user, @milestone_track] do |f| %>
+	<div class="field">
+		<%= f.label :"Name of new Milestone track" %><br />
+		<%= f.text_field :name, required: true %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit "Create new track" %>
+	</div>
+<% end %>
+
+<hr />
+
 <div class="container">
 <% @user.milestone_tracks.each do |track| %>
 	<div class="row">
@@ -9,18 +22,18 @@
 			<span class="glyphicon glyphicon-certificate btn-lg"></span>
 		</div>
 	</div>
-<% end %>
+	<%= form_for [track, @milestone] do |f| %>
+		<div class="field">
+			<%= f.label :"Name of new Milestone" %><br />
+			<%= f.text_field :name, required: true %>
+			<%= f.hidden_field :track_id, :value => track.id %>
+		</div>
 
+		<div class="actions">
+			<%= f.submit "Create new milestone" %>
+		</div>
 
-<%= form_for [@user, @milestone_track] do |f| %>
-	<div class="field">
-		<%= f.label :"Name of new Milestone track" %><br />
-		<%= f.text_field :name, required: true %>
-	</div>
-
-	<div class="actions">
-		<%= f.submit "Create new track" %>
-	</div>
+	<% end %>
 <% end %>
 
 </div>
