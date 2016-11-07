@@ -13,10 +13,6 @@ Rails.application.routes.draw do
       resources :milestones
   end
 
-  resources :milestones do
-      resources :milestone_tracks
-      resources :users
-  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

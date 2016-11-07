@@ -1,0 +1,15 @@
+TODO: Discuss what we want to do with this page, if anything.
+
+<div class="container">
+    <% unless @user.milestone_tracks.empty? %>
+        <% @user.milestone_tracks.each do |track| %>
+            <h4>Track Name: <%= track.name %> </h4> <hr />
+            <% @milestones.where(track_id: track.id ).each do |m| %>
+                <%= m.name %> <br />
+            <% end %> <br />
+        <% end %>
+    <% else %>
+        <p> You have no Milestones set! </p>
+        <p> Please head on over <a href="/users/<%= current_user.id %>/milestone_tracks">here</a> to get started on your Milestones! </p>
+    <% end %>
+</div>

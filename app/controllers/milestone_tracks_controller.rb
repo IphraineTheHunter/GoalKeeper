@@ -5,6 +5,7 @@ class MilestoneTracksController < ApplicationController
       @user = User.find(params[:user_id])
       @milestone_track = MilestoneTrack.new
       @milestone = Milestone.new
+      @milestones_all = Milestone.all
     end
 
     def create
