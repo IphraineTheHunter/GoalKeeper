@@ -6,10 +6,16 @@ Rails.application.routes.draw do
   resources :users do
     resources :recurring_goals
     resources :milestone_tracks
+    resources :milestones
   end
 
   resources :milestone_tracks do
       resources :milestones
+  end
+
+  resources :milestones do
+      resources :milestone_tracks
+      resources :users
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

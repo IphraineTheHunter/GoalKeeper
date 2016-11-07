@@ -6,8 +6,8 @@
 		<ul class="nav navbar-nav">
 			<% if user_signed_in? %>
 				<li class="active"><a href="/users/<%= current_user.id %>" >Home</a><li>
-				<li><a href="/users/<%= current_user.id %>/milestone_tracks">Milestones</a></li>
-	    		<li><a href="#">Page 2</a></li>
+	    		<li><a href="/users/<%= current_user.id %>/milestones">Milestones</a></li>
+				<li><a href="/users/<%= current_user.id %>/milestone_tracks">Milestone Tracks</a></li>
 	    		<li><a href="#">Page 3</a></li>
 			<% end %>
 		</ul>
