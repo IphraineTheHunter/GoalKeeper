@@ -3,13 +3,13 @@
 		<div class="col-sm-9">
 			<div class="repeating-goals col-sm-12">
 				<h3>Recurring Goals</h3>
-				
+
 				<div class="row">
 					<button class="col-sm-4 select-goal-type daily selected">Daily</button>
 					<button class="col-sm-4 select-goal-type weekly">Weekly</button>
 					<button class="col-sm-4 select-goal-type monthly">Monthly</button>
 				</div>
-				
+
 				<!-- refactor these into partials -->
 				<%= render partial: 'recurring_goals', locals: {user: @user, goal_type: 'daily', hidden: ''} %>
 				<%= render partial: 'recurring_goals', locals: {user: @user, goal_type: 'weekly', hidden: 'hidden'} %>
@@ -20,7 +20,7 @@
 </div>
 
 <%= form_for [@user, @recurring_goal] do |f| %>
-	
+
 	<div class="field">
 		<%= f.label :"Name of new Goal" %><br />
 		<%= f.text_field :name, required: true %>
@@ -31,6 +31,35 @@
 		<%= f.submit "Create Daily Goal" %>
 	</div>
 <% end %>
+
+<hr />
+<div class="container">
+	<h3> Current Milestone Tracks </h3>
+	<% @user.milestone_tracks.each do |track| %>
+		<div class="row">
+			<h4><%= track.name %></h4>
+			<div class="line col-sm-11">
+				<hr/>
+			</div>
+			<div class="line col-sm-1">
+				<span class="glyphicon glyphicon-certificate btn-lg"></span>
+			</div>
+			<div>
+				<ul>
+					<% @milestones_all.where(track_id: track.id ).each do |m| %>
+							<li class="milestone_icon" id="<%= m.id %>"><span class="glyphicon glyphicon-flag btn-lg">
+							</span><milestone class="hidden"><%= m.name %></milestone></li>
+
+					<% end %>
+				</ul> <br />
+			</div>
+		</div>
+	<% end %>
+</div>
+<!-- Script for showing and displaying Milestones -->
+<script>
+	milestones();
+</script>
 
 <script>
 	recurringGoals(<%= @user.id %>);

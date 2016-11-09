@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recurring_goal = RecurringGoal.new
+    @milestone_track = MilestoneTrack.new
+    @milestone = Milestone.new
+    @milestones_all = Milestone.all
   end
 
   private
