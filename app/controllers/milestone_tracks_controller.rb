@@ -13,5 +13,7 @@ class MilestoneTracksController < ApplicationController
         redirect_to :back
     end
 
+    #def show
 
+    #end
 end

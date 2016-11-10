@@ -1,6 +1,6 @@
 <div class="container">
 	<% @user.milestone_tracks.each do |track| %>
-		<div class="row">
+		<div class="row" id="<%= track.id %>">
 			<h4><%= track.name %></h4>
 			<div class="line col-sm-11">
 				<hr/>
@@ -11,18 +11,34 @@
 			<div>
 				<ul>
 					<% @milestones_all.where(track_id: track.id ).each do |m| %>
-							<li class="milestone_icon" id="<%= m.id %>"><span class="glyphicon glyphicon-flag btn-lg">
-							</span><milestone class="hidden"><%= m.name %></milestone></li>
+							<li class="milestone_icon" id="<%= m.id %>"><span class="glyphicon glyphicon-flag btn-lg"></span>
+								<milestone class="hidden">
+									<div class="card" id="<%= m.id %>">
+										<h4><%= m.name %></h4>
+										<span class="glyphicon glyphicon-pencil edit-button"> </span>
+										<div class="hidden">
+											<%= form_for [track, @milestone] do |f| %>
+												<div class="field">
+													<%= f.label :"New name for this Milestone" %><br />
+													<%= f.text_field :name, required: true, :value => m.name %>
+													<%= f.hidden_field :track_id, :value => track.id %>
+													<%= f.hidden_field :m_id, :value => m.id %>
+												</div>
+
+												<div class="actions">
+													<%= f.submit "Create new milestone" %>
+												</div>
+
+											<% end %>
+										</div>
+									</div>
+								</milestone>
+							</li>
 
 					<% end %>
 				</ul> <br />
 			</div>
 		</div>
-
-
-
-
-
 
 		<%= form_for [track, @milestone] do |f| %>
 			<div class="field">
