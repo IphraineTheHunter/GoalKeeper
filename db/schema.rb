@@ -19,11 +19,9 @@ ActiveRecord::Schema.define(version: 20161107043213) do
   end
 
   create_table "milestones", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "completed"
-    t.integer  "track_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "name"
+    t.boolean "completed"
+    t.integer "track_id"
   end
 
   create_table "recurring_goals", force: :cascade do |t|

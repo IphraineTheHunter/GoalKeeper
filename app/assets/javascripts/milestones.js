@@ -1,29 +1,23 @@
 function milestones(){
-    $(".edit-button").click(function(){
-        var milestoneCard = this.parentNode;
+	positionMilestones();
+	assignMilestoneMarkerClick();
 
-        $(milestoneCard).find('div').removeClass('hidden');
-        $(milestoneCard).find('h4').addClass('hidden');
-    });
+    
+    function assignMilestoneMarkerClick(){
+    	$('.milestone-marker').click(function(){
+	        
+	    });
+    };
+    
+    function positionMilestones(){
+		var milestoneMarkers = $("span.milestone-marker");
+		var milestoneIndex;
+		for (milestoneIndex = 0; milestoneIndex < milestoneMarkers.length; milestoneIndex++){
+			var milestone = milestoneMarkers[milestoneIndex];
+			milestone.style.left = Math.ceil(((milestoneIndex + 1) / (milestoneMarkers.length + 1)) * 100) + "%";
+		}
+	};
+};
 
 
 
-    $('.milestone_icon').click(function(){
-        // hide the info for all the milestones for this track
-        track = $(this.parentNode);
-        track.find('milestone').addClass('hidden');
-        track.find('span').removeClass('glyphicon glyphicon-flag btn-lg');
-        track.find('span').addClass('glyphicon glyphicon-flag btn-lg');
-
-
-        milestoneInfo = $(this);
-        showMilestoneInfo(milestoneInfo);
-    });
-
-
-    function showMilestoneInfo(milestoneInfo){
-        milestoneInfo.find('span').removeClass('glyphicon glyphicon-flag btn-lg');
-        milestoneInfo.find('span').addClass('glyphicon glyphicon-plus btn-lg');
-        milestoneInfo.find('milestone').removeClass('hidden');
-    }
-}
