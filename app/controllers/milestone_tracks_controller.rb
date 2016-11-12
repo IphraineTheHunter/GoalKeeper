@@ -9,7 +9,7 @@ class MilestoneTracksController < ApplicationController
     end
 
     def create
-        current_user.milestone_tracks.create(name: params[:milestone_track][:name])
+        current_user.milestone_tracks.create(name: params[:milestone_track][:name], track_type: params[:milestone_track][:track_type])
         redirect_to :back
     end
 

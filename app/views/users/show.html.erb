@@ -47,9 +47,14 @@
 			<div>
 				<ul>
 					<% @milestones_all.where(track_id: track.id ).each do |m| %>
-							<li class="milestone_icon" id="<%= m.id %>"><span class="glyphicon glyphicon-flag btn-lg">
-							</span><milestone class="hidden"><%= m.name %></milestone></li>
-
+					<% unless m.completed? %>
+						<li class="milestone_icon" id="<%= m.id %>"><span class="glyphicon glyphicon-star-empty btn-lg"></span>
+					<% else %>
+						<li class="milestone_icon" id="<%= m.id %>"><span class="glyphicon glyphicon-star btn-lg"></span>
+					<% end %>
+					<milestone class="hidden">
+						<div class="card" id="<%= m.id %>">
+							<h4><%= m.name %></h4>
 					<% end %>
 				</ul> <br />
 			</div>

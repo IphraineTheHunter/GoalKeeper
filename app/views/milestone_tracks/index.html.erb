@@ -2,6 +2,7 @@
 	<% @user.milestone_tracks.each do |track| %>
 		<div class="row" id="<%= track.id %>">
 			<h4><%= track.name %></h4>
+			<h5>Milestone Type: <%= track.track_type %></h5>
 			<div class="line col-sm-11">
 				<hr/>
 			</div>
@@ -11,10 +12,28 @@
 			<div>
 				<ul>
 					<% @milestones_all.where(track_id: track.id ).each do |m| %>
-							<li class="milestone_icon" id="<%= m.id %>"><span class="glyphicon glyphicon-flag btn-lg"></span>
+							<% unless m.completed? %>
+								<li class="milestone_icon" id="<%= m.id %>"><span class="glyphicon glyphicon-star-empty btn-lg"></span>
+							<% else %>
+								<li class="milestone_icon" id="<%= m.id %>"><span class="glyphicon glyphicon-star btn-lg"></span>
+							<% end %>
 								<milestone class="hidden">
 									<div class="card" id="<%= m.id %>">
 										<h4><%= m.name %></h4>
+										<% unless m.completed? %>
+											<%= form_for [track, @milestone] do |f| %>
+												<div class="field">
+													<%= f.check_box(:completed) %>
+													<%= f.label :"Complete this milestone?" %>
+													<%= f.hidden_field :name, :value => m.name %>
+													<%= f.hidden_field :m_id, :value => m.id %>
+												</div>
+
+												<div class="actions">
+													<%= f.submit "Complete Milestone" %>
+												</div>
+											<% end %>
+										<% end %>
 										<span class="glyphicon glyphicon-pencil edit-button"> </span>
 										<div class="hidden">
 											<%= form_for [track, @milestone] do |f| %>
@@ -26,7 +45,7 @@
 												</div>
 
 												<div class="actions">
-													<%= f.submit "Create new milestone" %>
+													<%= f.submit "Edit Milestone" %>
 												</div>
 
 											<% end %>
@@ -45,6 +64,9 @@
 				<%= f.label :"Name of new Milestone" %><br />
 				<%= f.text_field :name, required: true %>
 				<%= f.hidden_field :track_id, :value => track.id %>
+				<% if track.track_type == "Monetary" %>
+					<br /> Ammount to save: $<%= f.number_field :number, required: true %>
+				<% end %>
 			</div>
 
 			<div class="actions">
@@ -60,6 +82,7 @@
 	<div class="field">
 		<%= f.label :"Name of new Milestone track" %><br />
 		<%= f.text_field :name, required: true %>
+		<%= f.select :track_type, ["Monetary", "Education", "Fitness", "Lifestyle"] %>
 	</div>
 
 	<div class="actions">
