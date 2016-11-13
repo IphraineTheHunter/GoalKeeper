@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107043213) do
+ActiveRecord::Schema.define(version: 20161113005222) do
 
   create_table "milestone_tracks", force: :cascade do |t|
     t.string  "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20161107043213) do
   create_table "milestones", force: :cascade do |t|
     t.string  "name"
     t.boolean "completed"
-    t.integer "track_id"
+    t.integer "milestone_track_id"
   end
 
   create_table "recurring_goals", force: :cascade do |t|

@@ -1,15 +1,12 @@
 class MilestonesController < ApplicationController
+    layout false
+    layout 'application', :except => :update_form
     def new
         @milestone = Milestone.new
     end
 
     def create
-        if params[:milestone][:m_id].present?
-            milestone = Milestone.find(params[:milestone][:m_id])
-            milestone.update name: params[:milestone][:name]
-        else
-            Milestone.create(name: params[:milestone][:name], completed: false, track_id: params[:milestone][:track_id])
-        end
+        Milestone.create(name: params[:milestone][:name], completed: false, track_id: params[:milestone][:track_id])
         redirect_to :back
     end
 
@@ -19,5 +16,16 @@ class MilestonesController < ApplicationController
           milestone.update name: params[:name]
         end
         redirect_to :back
+    end
+    
+    def update
+      milestone = Milestone.find(params[:id])
+      milestone.update name: params[:milestone][:name]
+      redirect_to :back
+    end
+    
+    def update_form
+      @milestone = Milestone.find(params[:id])
+      @user = @milestone.milestone_track.user
     end
 end
