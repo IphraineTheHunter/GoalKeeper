@@ -1,5 +1,7 @@
-<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
-	<%= f.label 'Name: ' %>
-	<%= f.text_field :name %>
-	<%= f.submit 'Save' %>
-<% end %>
+<div class="milestone_form">
+	<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
+		<%= f.label 'Name: ' %>
+		<%= f.text_field :name %>
+		<%= f.submit 'Save' %>
+	<% end %>
+</div>

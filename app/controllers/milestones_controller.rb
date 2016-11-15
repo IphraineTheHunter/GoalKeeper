@@ -1,12 +1,12 @@
 class MilestonesController < ApplicationController
     layout false
-    layout 'application', :except => :update_form
+#    layout 'application', :except => :update_form
     def new
         @milestone = Milestone.new
     end
 
     def create
-        Milestone.create(name: params[:milestone][:name], completed: false, track_id: params[:milestone][:track_id])
+        Milestone.create(name: params[:milestone][:name], completed: false, milestone_track_id: params[:milestone][:track_id])
         redirect_to :back
     end
 
@@ -17,13 +17,13 @@ class MilestonesController < ApplicationController
         end
         redirect_to :back
     end
-    
+
     def update
       milestone = Milestone.find(params[:id])
       milestone.update name: params[:milestone][:name]
       redirect_to :back
     end
-    
+
     def update_form
       @milestone = Milestone.find(params[:id])
       @user = @milestone.milestone_track.user
