@@ -17,6 +17,7 @@ class MilestoneTracksController < ApplicationController
     def update_progress
         @milestone_track = MilestoneTrack.find(params[:id])
         @user = @milestone_track.user
+        render :layout => false
     end
 
     def update

@@ -1,6 +1,4 @@
 class MilestonesController < ApplicationController
-    layout false
-#    layout 'application', :except => :update_form
     def new
         @milestone = Milestone.new
     end
@@ -27,5 +25,6 @@ class MilestonesController < ApplicationController
     def update_form
       @milestone = Milestone.find(params[:id])
       @user = @milestone.milestone_track.user
+      render :layout => false
     end
 end
