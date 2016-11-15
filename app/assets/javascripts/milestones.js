@@ -12,7 +12,7 @@ function milestones(){
 		// Adding the class "active" and bailing if it's already been
 		// appended works regardless of any changes.
 		if ( $(this).hasClass('active') ) {
-			$(".form-container").remove();
+//			$(".form-container").remove(); This doesn't work as intended
 			$(this).removeClass('active');
 			return;
 		}

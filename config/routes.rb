@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     resources :recurring_goals
     resources :milestone_tracks
     resources :milestones
-    
+
   end
-  
+
   get '/milestones/:id/updateForm', to: 'milestones#update_form'
-  
+  get '/milestone_tracks/:id/updateProgress', to: 'milestone_tracks#update_progress'
   resources :milestone_tracks do
       resources :milestones
   end
