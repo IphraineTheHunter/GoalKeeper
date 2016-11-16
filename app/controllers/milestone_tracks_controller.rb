@@ -23,6 +23,13 @@ class MilestoneTracksController < ApplicationController
     def update
       milestone_track = MilestoneTrack.find(params[:milestone_track][:milestone_track_id])
       milestone_track.progress += params[:milestone_track][:progress].to_f
+
+      milestone_track.milestones.each do |m|
+          if m.progress < milestone_track.progress
+              m.update completed: 'true'
+          end
+      end
+
       milestone_track.save
       redirect_to :back
     end

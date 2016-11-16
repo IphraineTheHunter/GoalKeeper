@@ -5,7 +5,11 @@
 			<div class="line col-sm-11 milestone-track">
 				<div class="circle milestone-marker"></div>
 				<% track.milestones.each do |m| %>
-					<span class="glyphicon glyphicon-flag milestone-marker" id="<%= m.id %>"><p><%= m.name %></p></span>
+					<% if m.completed %>
+						<span class="glyphicon glyphicon-flag milestone-marker" id="<%= m.id %>"><p><%= m.name %></p></span>
+					<% else %>
+						<span class="glyphicon glyphicon-unchecked milestone-marker" id="<%= m.id %>"><p><%= m.name %></p></span>
+					<% end %>
 					<div class="circle milestone-marker"></div>
 				<% end %>
 				<hr/>
@@ -13,10 +17,10 @@
 			<div class="line col-sm-1">
 				<span class="glyphicon glyphicon-certificate btn-lg"></span>
 			</div>
-			<div>
-				<p> Progress: <%= track.progress %> / <%= track.numeric_value %> </p>
-				<span class="glyphicon glyphicon-plus add-progress" id="<%= track.id %>">Add Progress</span>
-			</div>
+		</div>
+		<div class="progress">
+			<p> Progress: <%= track.progress %> / <%= track.numeric_value %> </p>
+			<span class="glyphicon glyphicon-plus add-progress" id="<%= track.id %>">Add Progress</span>
 		</div>
 
 		<!-- TODO: Make this be a button and make an AJAX request -->
@@ -24,8 +28,8 @@
 			<div class="field">
 				<%= f.label :"Name of new Milestone" %><br />
 				<%= f.text_field :name, required: true %><br />
-				<%= f.label :"Enter the goal reached:" %>
-				<%= f.number_field :number_reached, :value => track.numeric_value %>
+				<%= f.label :"Enter the goal to reach:" %><br />
+				<%= f.number_field :progress, :value => track.numeric_value %>
 				<%= f.hidden_field :track_id, :value => track.id %>
 			</div>
 
