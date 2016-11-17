@@ -5,7 +5,9 @@
 			<%= f.text_field :name %>
 			<%= f.label 'Mark Complete?' %>
 			<%= f.check_box(:completed) %>
-
+			<%= f.label 'Due date: ' %>
+			<%= f.date_field :due %>
+			
 			<%= f.submit 'Update this Milestone' %>
 		<% end %>
 	<% end %>

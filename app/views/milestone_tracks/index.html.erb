@@ -26,11 +26,13 @@
 		<!-- TODO: Make this be a button and make an AJAX request -->
 		<%= form_for [track, @milestone] do |f| %>
 			<div class="field">
+				<%= f.hidden_field :track_id, :value => track.id %>
 				<%= f.label :"Name of new Milestone" %><br />
 				<%= f.text_field :name, required: true %><br />
 				<%= f.label :"Enter the goal to reach:" %><br />
-				<%= f.number_field :progress, :value => track.numeric_value %>
-				<%= f.hidden_field :track_id, :value => track.id %>
+				<%= f.number_field :progress, :value => track.numeric_value %><br />
+				<%= f.label :"Due date: " %>
+				<%= f.date_field :due %>
 			</div>
 
 			<div class="actions">

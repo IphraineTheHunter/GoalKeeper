@@ -5,7 +5,8 @@ class MilestonesController < ApplicationController
 
     def create
         Milestone.create(name: params[:milestone][:name], completed: false,
-        milestone_track_id: params[:milestone][:track_id], progress: params[:milestone][:progress])
+            milestone_track_id: params[:milestone][:track_id], progress: params[:milestone][:progress],
+                due: params[:milestone][:due])
         redirect_to :back
     end
 
@@ -20,6 +21,7 @@ class MilestonesController < ApplicationController
     def update
         milestone = Milestone.find(params[:id])
         milestone.update name: params[:milestone][:name]
+        milestone.update due: params[:milestone][:due]
         if params[:milestone][:completed] == '1'
             milestone.update completed: 'true'
             milestone.milestone_track.progress += milestone.progress
