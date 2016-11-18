@@ -22,7 +22,11 @@ class MilestoneTracksController < ApplicationController
 
     def update
       milestone_track = MilestoneTrack.find(params[:milestone_track][:milestone_track_id])
-      milestone_track.progress += params[:milestone_track][:progress].to_f
+      if params[:milestone_track][:set] == 'true'
+          milestone_track.update progress: params[:milestone_track][:progress].to_f
+      else
+          milestone_track.progress += params[:milestone_track][:progress].to_f
+      end
 
       milestone_track.milestones.each do |m|
           if m.progress < milestone_track.progress
