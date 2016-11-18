@@ -29,7 +29,7 @@ class MilestoneTracksController < ApplicationController
       end
 
       milestone_track.milestones.each do |m|
-          if m.progress < milestone_track.progress
+          if m.progress <= milestone_track.progress
               m.update completed: 'true'
           end
       end
