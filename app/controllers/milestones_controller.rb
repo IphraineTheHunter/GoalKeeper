@@ -20,15 +20,20 @@ class MilestonesController < ApplicationController
 
     def update
         milestone = Milestone.find(params[:id])
-        milestone.update name: params[:milestone][:name]
-        milestone.update due: params[:milestone][:due]
-        if params[:milestone][:completed] == '1'
-            milestone.update completed: 'true'
-            milestone.milestone_track.progress += milestone.progress
-            milestone.save
-            milestone.milestone_track.save
+        if params[:milestone][:remove] == 'true'
+            milestone.delete
+            redirect_to :back
+        else
+            milestone.update name: params[:milestone][:name]
+            milestone.update due: params[:milestone][:due]
+            if params[:milestone][:completed] == '1'
+                milestone.update completed: 'true'
+                milestone.milestone_track.progress += milestone.progress
+                milestone.save
+                milestone.milestone_track.save
+            end
+            redirect_to :back
         end
-        redirect_to :back
     end
 
     def update_form

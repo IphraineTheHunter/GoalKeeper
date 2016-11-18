@@ -6,9 +6,18 @@
 			<%= f.label 'Mark Complete?' %>
 			<%= f.check_box(:completed) %>
 			<%= f.label 'Due date: ' %>
-			<%= f.date_field :due %>
-			
+			<%= f.date_field :due %> <br />
+			<%= f.label 'Delete Milestone?' %>
+
 			<%= f.submit 'Update this Milestone' %>
 		<% end %>
+	<% end %>
+</div>
+<div>
+	<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
+		<%= f.label 'Remove Milestone? ' %>
+		<%= f.hidden_field :remove, :value => true %>
+
+		<%= f.submit 'Remove Milestone' %>
 	<% end %>
 </div>
