@@ -29,12 +29,22 @@ class MilestoneTracksController < ApplicationController
       end
 
       milestone_track.milestones.each do |m|
-          if m.progress <= milestone_track.progress
-              m.update completed: 'true'
+          if m.progress.present?
+              if m.progress <= milestone_track.progress
+                  m.update completed: 'true'
+              end
           end
       end
 
       milestone_track.save
       redirect_to :back
+    end
+
+
+    def create_form
+#        byebug
+        @milestone_track = MilestoneTrack.find(params[:id])
+        @milestone = Milestone.new
+        render :layout => false
     end
 end

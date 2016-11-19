@@ -41,3 +41,17 @@ div.progress {
     padding: 40px;
     overflow: inherit;
 }
+
+div.milestone-form-field {
+
+    display:inline-flex;
+    background-color: #f8f8f8;
+    border-style: solid;
+    border-color: #dcdcdc;
+    border-width: 1px;
+    padding: 8px;
+
+    .milestone-form {
+        padding: 4px;
+    }
+}

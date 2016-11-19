@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
   end
 
+  get '/milestone_tracks/:id/createForm', to: 'milestone_tracks#create_form'
   get '/milestones/:id/updateForm', to: 'milestones#update_form'
   get '/milestone_tracks/:id/updateProgress', to: 'milestone_tracks#update_progress'
+
   resources :milestone_tracks do
       resources :milestones
   end

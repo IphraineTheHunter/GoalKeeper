@@ -28,7 +28,9 @@ class MilestonesController < ApplicationController
             milestone.update due: params[:milestone][:due]
             if params[:milestone][:completed] == '1'
                 milestone.update completed: 'true'
-                milestone.milestone_track.progress += milestone.progress
+                if milestone.progress.present?
+                    milestone.milestone_track.progress += milestone.progress
+                end
                 milestone.save
                 milestone.milestone_track.save
             end

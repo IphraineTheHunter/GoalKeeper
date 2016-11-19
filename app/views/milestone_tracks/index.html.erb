@@ -20,39 +20,24 @@
 		</div>
 		<div class="progress">
 			<p> Progress: <%= track.progress %> / <%= track.numeric_value %> </p>
-			<span class="glyphicon glyphicon-plus add-progress" id="<%= track.id %>">Add/Set Progress</span>
+		</div>
+		<div class="add-progress" id="<%= track.id %>">
+			<span class="glyphicon glyphicon-plus"></span>Add/Set Progress
 		</div>
 
-		<!-- TODO: Make this be a button and make an AJAX request -->
-		<%= form_for [track, @milestone] do |f| %>
-			<div class="field">
-				<%= f.hidden_field :track_id, :value => track.id %>
-				<%= f.label :"Name of new Milestone" %><br />
-				<%= f.text_field :name, required: true %><br />
-				<%= f.label :"Enter the goal to reach:" %><br />
-				<%= f.number_field :progress, :value => track.numeric_value %><br />
-				<%= f.label :"Due date: " %>
-				<%= f.date_field :due %>
-			</div>
-
-			<div class="actions">
-				<%= f.submit "Create new milestone" %>
-			</div>
-
-		<% end %>
+		<div class="add-milestone" id="<%= track.id %>">
+			<span class="glyphicon glyphicon-plus"></span>Add Milestone
+		</div>
 	<% end %>
 </div>
-<hr />
 
 <%= form_for [@user, @milestone_track] do |f| %>
-	<div class="field">
+	<div class="form-container">
 		<%= f.label :"Name of new Milestone track" %><br />
 		<%= f.text_field :name, required: true %><br />
 		<%= f.label :"Number you want to reach: " %>
 		<%= f.number_field :numeric_value, :value => 0 %>
-	</div>
-
-	<div class="actions">
+		<br />
 		<%= f.submit "Create new track" %>
 	</div>
 <% end %>

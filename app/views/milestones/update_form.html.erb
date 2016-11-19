@@ -1,23 +1,24 @@
-<div>
-	<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
-		<% if @milestone.completed != true %>
-			<%= f.label 'Name: ' %>
-			<%= f.text_field :name %>
-			<%= f.label 'Mark Complete?' %>
-			<%= f.check_box(:completed) %>
-			<%= f.label 'Due date: ' %>
-			<%= f.date_field :due %> <br />
-			<%= f.label 'Delete Milestone?' %>
+<div class="milestone-form-field">
+	<div class="milestone-form">
+		<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
+			<% if @milestone.completed != true %>
+				<%= f.label 'Name: ' %>
+				<%= f.text_field :name %>
+				<%= f.label 'Mark Complete?' %>
+				<%= f.check_box(:completed) %>
+				<%= f.label 'Due date: ' %>
+				<%= f.date_field :due %> <br />
 
-			<%= f.submit 'Update this Milestone' %>
+				<%= f.submit 'Update this Milestone' %>
+			<% end %>
 		<% end %>
-	<% end %>
-</div>
-<div>
-	<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
-		<%= f.label 'Remove Milestone? ' %>
-		<%= f.hidden_field :remove, :value => true %>
+	</div>
+	<div class="milestone-form">
+		<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
+			<%= f.label 'Remove Milestone? ' %>
+			<%= f.hidden_field :remove, :value => true %>
 
-		<%= f.submit 'Remove Milestone' %>
-	<% end %>
+			<%= f.submit 'Remove Milestone' %>
+		<% end %>
+	</div>
 </div>

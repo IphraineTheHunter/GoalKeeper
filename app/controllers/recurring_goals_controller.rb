@@ -16,4 +16,8 @@ class RecurringGoalsController < ApplicationController
     redirect_to :back
   end
 
+  def recurring_goal_action
+      render :layout => false
+  end
+
 end
