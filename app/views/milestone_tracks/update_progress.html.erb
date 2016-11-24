@@ -1,0 +1,22 @@
+<div class="milestone-form-field">
+    <div class="milestone-form">
+        <h4>Add progress: </h4>
+        <hr />
+        <%= form_for [@milestone_track] do |f| %>
+            <%= f.number_field :progress, :value => 1 %>
+            <%= f.hidden_field :milestone_track_id, :value => params[:id] %>
+            <%= f.hidden_field :set, :value => false %>
+            <%= f.submit "Add" %>
+        <% end %>
+    </div>
+    <div class="milestone-form">
+        <h4>Set progress: </h4>
+        <hr />
+        <%= form_for [@milestone_track] do |f| %>
+            <%= f.number_field :progress, :value => 1 %>
+            <%= f.hidden_field :milestone_track_id, :value => params[:id] %>
+            <%= f.hidden_field :set, :value => true %>
+            <%= f.submit "Set" %>
+        <% end %>
+    </div>
+</div>

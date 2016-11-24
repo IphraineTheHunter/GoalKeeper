@@ -38,6 +38,7 @@ class MilestoneTracksController < ApplicationController
 
       milestone_track.save
       redirect_to :back
+#      render plain: params.inspect
     end
 
 

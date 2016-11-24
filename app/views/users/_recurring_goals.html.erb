@@ -4,8 +4,7 @@
 			<div class="card" id='<%= goal.id %>'>
 				<h4><%= goal.name %></h4>
 			    <% if goal.completed == false %>
-			    	<a href="/users/<%= user.id %>/recurring_goals/<%= goal.id %>?completed=true"
-			    		class="glyphicon glyphicon-unchecked btn-lg"></a>
+			    	<span class="glyphicon glyphicon-unchecked btn-lg goal"></span>
 			    <% else %>
 			    	<span class="glyphicon glyphicon-ok btn-lg"></span>
 			    <% end %>

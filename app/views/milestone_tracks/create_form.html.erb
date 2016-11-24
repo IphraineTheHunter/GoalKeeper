@@ -1,0 +1,32 @@
+<div class="milestone-form-field">
+	<div class="milestone-form">
+		<h4> Numeric Milestone </h4>
+		<hr />
+		<%= form_for [@milestone_track, @milestone] do |f| %>
+				<% track = @milestone_track %>
+				<%= f.hidden_field :track_id, :value => track.id %>
+				<%= f.label :"Name of new Milestone" %><br />
+				<%= f.text_field :name, required: true %><br />
+				<%= f.label :"Enter the goal to reach:" %><br />
+				<%= f.number_field :progress, :value => track.numeric_value %><br />
+				<%= f.label :"Due date: " %>
+				<%= f.date_field :due %><br />
+
+				<%= f.submit "Create new milestone" %>
+		<% end %>
+	</div>
+	<div class="milestone-form">
+		<h4> Non-numeric Milestone </h4>
+		<hr />
+		<%= form_for [@milestone_track, @milestone] do |f| %>
+				<% track = @milestone_track %>
+				<%= f.hidden_field :track_id, :value => track.id %>
+				<%= f.label :"Name of new Milestone" %><br />
+				<%= f.text_field :name, required: true %><br />
+				<%= f.label :"Due date: " %>
+				<%= f.date_field :due %><br />
+
+				<%= f.submit "Create new milestone" %>
+		<% end %>
+	</div>
+</div>

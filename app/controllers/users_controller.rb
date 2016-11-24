@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @milestone_track = MilestoneTrack.new
     @milestone = Milestone.new
     @milestones_all = Milestone.all
+    @recurring_goals_all = RecurringGoal.all
   end
 
   private

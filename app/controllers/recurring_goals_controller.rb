@@ -2,9 +2,6 @@ class RecurringGoalsController < ApplicationController
 
   def show
     goal = RecurringGoal.find(params[:id])
-    if (params[:name])
-      goal.update name: params[:name]
-    end
     if (params[:completed])
       goal.update completed: params[:completed]
     end
@@ -12,11 +9,20 @@ class RecurringGoalsController < ApplicationController
   end
 
   def create
-    current_user.recurring_goals.create(name: params[:recurring_goal][:name], completed: false, goal_type: params[:recurring_goal][:goal_type])
+      byebug
+#    current_user.recurring_goals.create(name: params[:recurring_goal][:name], completed: false, goal_type: params[:recurring_goal][:goal_type])
     redirect_to :back
   end
 
-  def recurring_goal_action
+  def update
+      goal = RecurringGoal.find(params[:id])
+      goal.update name: params[:recurring_goal][:name]
+      redirect_to :back
+  end
+
+  def update_form
+      @recurring_goal = RecurringGoal.find(params[:id])
+      @user = @recurring_goal.user
       render :layout => false
   end
 

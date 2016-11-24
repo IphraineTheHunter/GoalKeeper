@@ -10,6 +10,11 @@ Rails.application.routes.draw do
 
   end
 
+  resources :recurring_goals do
+      resources :recurring_goals
+  end
+
+  get '/users/:id/recurring_goals/:id/updateForm', to: 'recurring_goals#update_form'
   get '/milestone_tracks/:id/createForm', to: 'milestone_tracks#create_form'
   get '/milestones/:id/updateForm', to: 'milestones#update_form'
   get '/milestone_tracks/:id/updateProgress', to: 'milestone_tracks#update_progress'

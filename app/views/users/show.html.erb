@@ -36,20 +36,7 @@
 <div class="container">
 	<h3> Current Milestone Tracks </h3>
 	<% @user.milestone_tracks.each do |track| %>
-		<div class="row" id="<%= track.id %>">
-			<h4><%= track.name %></h4>
-			<div class="line col-sm-11 milestone-track">
-				<div class="circle milestone-marker"></div>
-				<% track.milestones.each do |m| %>
-					<span class="glyphicon glyphicon-unchecked milestone-marker" id="<%= m.id %>"><p><%= m.name %></p></span>
-					<div class="circle milestone-marker"></div>
-				<% end %>
-				<hr/>
-			</div>
-			<div class="line col-sm-1">
-				<span class="glyphicon glyphicon-certificate btn-lg"></span>
-			</div>
-		</div>
+		<%= render partial: 'milestone_tracks/milestone_tracks', locals: {track: track} %>
 	<% end %>
 </div>
 <!-- Script for showing and displaying Milestones -->
