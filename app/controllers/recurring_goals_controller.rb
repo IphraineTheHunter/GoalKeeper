@@ -16,14 +16,19 @@ class RecurringGoalsController < ApplicationController
 
   def update
       goal = RecurringGoal.find(params[:id])
-      if params[:completed].present?
-          goal.update completed: true
-          #redirect_to :back
+      if params[:remove].present?
+          goal.delete
+          redirect_to :back
+      else
+          if params[:completed].present?
+              goal.update completed: true
+              #redirect_to :back
+          end
+          if params[:recurring_goal][:name].present?
+              goal.update name: params[:recurring_goal][:name]
+          end
+          redirect_to :back
       end
-      if params[:recurring_goal][:name].present?
-          goal.update name: params[:recurring_goal][:name]
-      end
-      redirect_to :back
   end
 
   def update_form

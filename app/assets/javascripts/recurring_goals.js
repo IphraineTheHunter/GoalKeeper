@@ -42,6 +42,18 @@ function recurringGoals(userId){
 
 	});
 
+	$(".delete-button").click(function(){
+		var goalCard = this.parentNode;
+		$.ajax({type: "PATCH",
+			url: userId + '/recurring_goals/' + goalCard.id,
+			data: {id: goalCard.id, remove: true},
+			success:{
+			}
+		})
+		location.reload()
+
+	});
+
 	function switchToGoalType(goalType){
 		$('.recurring-goals').addClass('hidden');
 		$('.select-goal-type').removeClass('selected');
