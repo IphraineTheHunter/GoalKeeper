@@ -1,22 +1,21 @@
-
-    <div class="row" id="<%= track.id %>">
-        <h4><%= track.name %></h4>
-        <div class="line col-sm-11 milestone-track">
-            <div class="circle milestone-marker"></div>
-            <% track.milestones.each do |m| %>
-                <% if m.completed %>
-                    <span class="glyphicon glyphicon-flag milestone-marker" id="<%= m.id %>"><p><%= m.name %></p></span>
-                <% else %>
-                    <span class="glyphicon glyphicon-unchecked milestone-marker" id="<%= m.id %>"><p><%= m.name %></p></span>
-                <% end %>
-                <div class="circle milestone-marker"></div>
+<div class="row" id="<%= track.id %>">
+    <h4><%= track.name %></h4>
+    <div class="line col-sm-11 milestone-track">
+        <div class="circle milestone-marker"></div>
+        <% track.milestones.each do |m| %>
+            <% if m.completed %>
+                <span class="glyphicon glyphicon-flag milestone-marker" id="<%= m.id %>"><p><%= m.name %></p></span>
+            <% else %>
+                <span class="glyphicon glyphicon-unchecked milestone-marker" id="<%= m.id %>"><p><%= m.name %></p></span>
             <% end %>
-            <hr/>
-        </div>
-        <div class="line col-sm-1">
-            <span class="glyphicon glyphicon-certificate btn-lg"></span>
-        </div>
+            <div class="circle milestone-marker"></div>
+        <% end %>
+        <hr/>
     </div>
-    <div class="progress">
-        <p> Progress: <%= track.progress %> / <%= track.numeric_value %> </p>
+    <div class="line col-sm-1">
+        <span class="glyphicon glyphicon-certificate btn-lg"></span>
     </div>
+</div>
+<div class="progress">
+    <p> Progress: <%= track.progress %> / <%= track.numeric_value %> </p>
+</div>

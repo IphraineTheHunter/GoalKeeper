@@ -28,13 +28,17 @@ function recurringGoals(userId){
 			});
 		};
 
-/*		goalCard.innerHTML =
-		"<form action='" + userId + "/recurring_goals/" + goalCard.id + "'>" +
-			"<input type='hidden' name='_method' value='PUT'>" +
-			"<label>Goal name</label>" +
-			"<input type='text' value='" + value + "' name='name' ></input>" +
-			"<input type='submit' value='Save'/>" +
-		"</form>";*/
+	});
+
+	$(".glyphicon-unchecked").click(function(){
+		var goalCard = this.parentNode;
+		$.ajax({type: "PATCH",
+			url: userId + '/recurring_goals/' + goalCard.id,
+			data: {id: goalCard.id, completed: true},
+			success:{
+			}
+		})
+		location.reload()
 
 	});
 
@@ -45,3 +49,5 @@ function recurringGoals(userId){
 		$('.select-goal-type.' + goalType).addClass('selected');
 	}
 };
+
+//http://stackoverflow.com/questions/17559563/sending-ajax-post-jquery-in-rails-application
