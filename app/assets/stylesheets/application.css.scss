@@ -16,8 +16,30 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  font: helvetica;
+  background-color: #ffe4c4; //bisque
+}
+
+.navbar {
+    background-color: #FF9945;
+    color: #000;
+
+    li {
+        background-color: #FF9945;
+    }
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #000;
+}
+
+.navbar-default .navbar-brand {
+    color: #000;
+}
+
 .card {
-  background-color: #fff;
+  background-color: #ffe9cf;
   border-radius: 6px;
   border-color: #cdcdcd;
   border-width: 1px;
@@ -28,6 +50,36 @@
   position: relative;
 }
 
-body {
-  font: helvetica;
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: inherit;
+  font-weight: bold;
+  background: #36C661;
+  padding: 6px 6px 6px 6px;
+  text-decoration: none;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"]:hover {
+  background: #5BD580;
+  text-decoration: none;
+}
+
+select:not([size]):not([multiple]) {
+    background-color: #36C661;
+    border-radius: 6px;
+    border-color: #cdcdcd;
+    border-width: 1px;
+    border-style: solid;
+    padding: 6px 18px;
+    margin: 10px 0;
+    color: #fff;
+    font-size: inherit;
+    font-weight: bold;
+}
+
+option {
+    font-weight: bold;
 }

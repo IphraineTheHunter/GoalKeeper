@@ -30,7 +30,7 @@ function recurringGoals(userId){
 
 	});
 
-	$(".glyphicon-unchecked").click(function(){
+	$(".goal").click(function(){
 		var goalCard = this.parentNode;
 		$.ajax({type: "PATCH",
 			url: userId + '/recurring_goals/' + goalCard.id,
@@ -38,19 +38,24 @@ function recurringGoals(userId){
 			success:{
 			}
 		})
-		location.reload()
+		setTimeout(location.reload(true), 2000)
 
 	});
 
 	$(".delete-button").click(function(){
-		var goalCard = this.parentNode;
-		$.ajax({type: "PATCH",
-			url: userId + '/recurring_goals/' + goalCard.id,
-			data: {id: goalCard.id, remove: true},
-			success:{
-			}
-		})
-		location.reload()
+		if (confirm('Are you sure you want to delete this goal?')) {
+			var goalCard = this.parentNode;
+			$.ajax({type: "PATCH",
+				url: userId + '/recurring_goals/' + goalCard.id,
+				data: {id: goalCard.id, remove: true},
+				success:{
+				}
+			})
+			setTimeout(location.reload(true), 2000)
+
+		} else {
+		    // we don't want to delete a goal
+		}
 
 	});
 

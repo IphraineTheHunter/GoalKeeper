@@ -3,10 +3,11 @@
 		<%= render partial: 'milestone_tracks', locals: {track: track} %>
 		<%= render partial: 'milestone_tracks_add_milestones', locals: {track: track} %>
 	<% end %>
-</div>
+
+<hr />
 
 <%= form_for [@user, @milestone_track] do |f| %>
-	<div class="form-container">
+	<div class="field">
 		<%= f.label :"Name of new Milestone track" %><br />
 		<%= f.text_field :name, required: true %><br />
 		<%= f.label :"Number you want to reach: " %>
@@ -15,7 +16,7 @@
 		<%= f.submit "Create new track" %>
 	</div>
 <% end %>
-
+</div>
 
 <!-- Script for showing and displaying Milestones -->
 <script>

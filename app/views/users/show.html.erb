@@ -1,36 +1,34 @@
 <div class="container">
 	<div class="row">
+		<h3>Recurring Goals</h3>
 		<div class="col-sm-9">
 			<div class="repeating-goals col-sm-12">
-				<h3>Recurring Goals</h3>
-
 				<div class="row">
 					<button class="col-sm-4 select-goal-type daily selected">Daily</button>
 					<button class="col-sm-4 select-goal-type weekly">Weekly</button>
 					<button class="col-sm-4 select-goal-type monthly">Monthly</button>
 				</div>
-
-				<!-- refactor these into partials -->
 				<%= render partial: 'recurring_goals', locals: {user: @user, goal_type: 'daily', hidden: ''} %>
 				<%= render partial: 'recurring_goals', locals: {user: @user, goal_type: 'weekly', hidden: 'hidden'} %>
 				<%= render partial: 'recurring_goals', locals: {user: @user, goal_type: 'monthly', hidden: 'hidden'} %>
 			</div>
 		</div>
 	</div>
+
+	<%= form_for [@user, @recurring_goal] do |f| %>
+
+		<div class="field">
+			<h4>Add Goal</h4>
+			<%= f.label :"Name of new Goal" %><br />
+			<%= f.text_field :name, required: true %>
+			<%= f.select :goal_type, ["Daily", "Weekly", "Monthly"] %>
+		</div>
+
+		<div class="actions">
+			<%= f.submit "Create Daily Goal" %>
+		</div>
+	<% end %>
 </div>
-
-<%= form_for [@user, @recurring_goal] do |f| %>
-
-	<div class="field">
-		<%= f.label :"Name of new Goal" %><br />
-		<%= f.text_field :name, required: true %>
-		<%= f.select :goal_type, ["Daily", "Weekly", "Monthly"] %>
-	</div>
-
-	<div class="actions">
-		<%= f.submit "Create Daily Goal" %>
-	</div>
-<% end %>
 
 <hr />
 <div class="container">

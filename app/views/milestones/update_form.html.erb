@@ -12,13 +12,10 @@
 				<%= f.submit 'Update this Milestone' %>
 			<% end %>
 		<% end %>
-	</div>
-	<div class="milestone-form">
+		<br />
 		<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
-			<%= f.label 'Remove Milestone? ' %>
 			<%= f.hidden_field :remove, :value => true %>
-
-			<%= f.submit 'Remove Milestone' %>
+			<%= f.submit 'Remove this Milestone' %>
 		<% end %>
 	</div>
 </div>
