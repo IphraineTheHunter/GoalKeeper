@@ -19,11 +19,18 @@
 
 body {
   font: helvetica;
-  background-color: #fff;
+  background-color: #f7f7f7;
 }
 
 .after-text-glyph {
   margin-left: 0.5em;
+}
+
+.navbar{
+  border-width: 0;
+  border-bottom-width: 3px;
+  border-radius: 0;
+  border-color: $primary-2;
 }
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover{
@@ -37,6 +44,7 @@ body {
 }
 
 .card {
+  background-color: #fff;
   border-radius: 6px;
   border-color: #cdcdcd;
   border-width: 1px;
@@ -45,6 +53,10 @@ body {
   width: 100%;
   margin: 10px 0;
   position: relative;
+  
+  h4 {
+    margin-left: 28px;
+  }
 }
 
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
