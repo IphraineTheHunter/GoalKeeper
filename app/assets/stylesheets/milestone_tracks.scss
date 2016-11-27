@@ -51,8 +51,8 @@ div.milestone-form-field {
     border-width: 1px;
     padding: 8px;
     width: 100%;
-
-    .milestone-form {
-        padding: 4px;
-    }
+}
+div.milestone-form {
+    position: absolute;
+    bottom: -190px;
 }

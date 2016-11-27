@@ -1,5 +1,5 @@
 <div class="milestone-form-field">
-	<div class="milestone-form">
+	<div>
 		<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
 			<% if @milestone.completed != true %>
 				<%= f.label 'Name: ' %>
