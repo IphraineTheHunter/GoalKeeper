@@ -15,31 +15,28 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "constants";
 
 body {
   font: helvetica;
-  background-color: #ffe4c4; //bisque
+  background-color: #fff;
 }
 
-.navbar {
-    background-color: #FF9945;
-    color: #000;
+.after-text-glyph {
+  margin-left: 0.5em;
+}
 
-    li {
-        background-color: #FF9945;
-    }
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover{
+    background-color: $primary-0;
+    color: #fff;
+    font-size: 24px;
 }
 
 .navbar-default .navbar-nav > li > a {
     color: #000;
 }
 
-.navbar-default .navbar-brand {
-    color: #000;
-}
-
 .card {
-  background-color: #ffe9cf;
   border-radius: 6px;
   border-color: #cdcdcd;
   border-width: 1px;
@@ -57,13 +54,13 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   color: #ffffff;
   font-size: inherit;
   font-weight: bold;
-  background: #36C661;
+  background: $secondary-2-2;
   padding: 6px 6px 6px 6px;
   text-decoration: none;
 }
 
 button, html input[type="button"], input[type="reset"], input[type="submit"]:hover {
-  background: #5BD580;
+  background: $secondary-2-1;
   text-decoration: none;
 }
 

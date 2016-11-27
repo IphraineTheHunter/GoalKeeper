@@ -3,20 +3,15 @@
 		<div class="navbar-header">
 			<a class="navbar-brand" href="/">GoalKeeper</a>
 		</div>
-		<ul class="nav navbar-nav">
-			<% if user_signed_in? %>
-				<li><a href="/users/<%= current_user.id %>" >Home</a><li>
-	    		<li><a href="/users/<%= current_user.id %>/milestone_tracks">Milestones</a></li>
-	    		<li><a href="#">Social (Coming Soon!)</a></li>
-			<% end %>
-		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<% if user_signed_in? %>
 				<li><a>
 					Hello <%= current_user.name %>
 				</a><li>
 				<li>
-					<%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %>
+					<%= link_to(destroy_user_session_path, :method => :delete) do %>
+						Sign Out<span class="glyphicon glyphicon-log-out after-text-glyph"></span>
+					<% end %>
 				</li>
 			<% else %>
 				<li>
@@ -25,4 +20,13 @@
 			<% end %>
 		</ul>
 	</div>
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<% if user_signed_in? %>
+				<li><a href="/users/<%= current_user.id %>" >Home</a><li>
+	    		<li><a href="/users/<%= current_user.id %>/milestone_tracks">Milestones</a></li>
+	    		<li><a href="#">Social (Coming Soon!)</a></li>
+			<% end %>
+		</ul>
+	</div>	
 </nav>
