@@ -28,7 +28,7 @@ function milestones(){
     			success: function(result){
 	    			var formElement = document.createElement("div");
 	    			formElement.classList.add('form-container');
-					formElement.classList.add('milestone-form');
+					formElement.classList.add('milestone-update-form');
 		        	formElement.innerHTML=result;
 				    milestoneMarker.appendChild(formElement);
 //				    $('.form-container').on('click', function(event){
