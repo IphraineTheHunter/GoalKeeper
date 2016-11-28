@@ -12,7 +12,6 @@
 				<%= f.submit 'Update this Milestone' %>
 			<% end %>
 		<% end %>
-		<br />
 		<%= form_for [@user, @milestone], html: { class: 'update-form' } do |f| %>
 			<%= f.hidden_field :remove, :value => true %>
 			<%= f.submit 'Remove this Milestone' %>

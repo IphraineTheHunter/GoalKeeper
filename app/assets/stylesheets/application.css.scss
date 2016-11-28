@@ -43,6 +43,10 @@ body {
     color: #000;
 }
 
+.top-navbar {
+    background-color: #f0f0f0;
+}
+
 .card {
   background-color: #fff;
   border-radius: 6px;
@@ -69,11 +73,16 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   background: $secondary-2-2;
   padding: 6px 6px 6px 6px;
   text-decoration: none;
+  margin-bottom: 2px;
 }
 
 button, html input[type="button"], input[type="reset"], input[type="submit"]:hover {
   background: $secondary-2-1;
   text-decoration: none;
+}
+
+input[type="number"] {
+    margin: 4px;
 }
 
 select:not([size]):not([multiple]) {

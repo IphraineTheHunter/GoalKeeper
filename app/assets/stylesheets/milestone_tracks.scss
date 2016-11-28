@@ -43,20 +43,20 @@ div.progress {
 }
 
 div.milestone-form-field {
-
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     display:inline-flex;
+    align-self: flex-start;
     background-color: cornsilk;
     border-style: solid;
     border-color: #dcdcdc;
     border-width: 1px;
     padding: 8px;
+    padding-bottom: 3px;
+    padding-top: 4px;
     width: 100%;
-
-    .milestone-form {
-        padding: 4px;
-    }
 }
+
 div.milestone-update-form {
     position: absolute;
-    bottom: -190px;
+    top:inherit;
 }
