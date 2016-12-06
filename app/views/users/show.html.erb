@@ -1,7 +1,7 @@
 <div class="container">
-	<div class="row">
-		<h3>Recurring Goals</h3>
-		<div class="col-sm-9">
+	<h3>Recurring Goals</h3>
+	<div class="card">
+		<div class="row">
 			<div class="repeating-goals col-sm-12">
 				<div class="row">
 					<button class="col-sm-4 select-goal-type daily selected">Daily</button>
@@ -14,7 +14,6 @@
 			</div>
 		</div>
 	</div>
-
 	<%= form_for [@user, @recurring_goal] do |f| %>
 
 		<div class="field">

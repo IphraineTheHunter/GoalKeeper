@@ -10,6 +10,7 @@ class MilestoneTrackTest < ActionDispatch::IntegrationTest
     include ApplicationHelper
     include MilestoneTracksHelpers
 
+
     #called at the beginning of every test
     setup do
         progress = 100.0
