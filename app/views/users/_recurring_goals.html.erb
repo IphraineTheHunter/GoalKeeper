@@ -4,7 +4,11 @@
 			<div class="card" id='<%= goal.id %>'>
 				<h4><%= goal.name %></h4>
 			    <% if goal.completed == false %>
-			    	<span class="glyphicon glyphicon-unchecked btn-lg goal"></span>
+					<% if @user.id == current_user.id %>
+						<span class="glyphicon glyphicon-unchecked btn-lg goal"></span>
+					<% else %>
+						<span class="glyphicon glyphicon-unchecked btn-lg"></span>
+					<% end %>
 			    <% else %>
 			    	<span class="glyphicon glyphicon-ok btn-lg"></span>
 			    <% end %>
