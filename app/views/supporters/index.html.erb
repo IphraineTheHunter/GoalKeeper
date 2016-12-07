@@ -1,0 +1,27 @@
+<div class="container">
+    <h3>Supporters</h3>
+    <div class="card">
+        <% @user.supporters.each do |s| %>
+            <h4>
+                <a href="/users/<%= s.supporter_id %>">
+                <span class="glyphicon glyphicon-user"</span></a>
+                <%= @users.find_by(id: s.supporter_id).name %>
+            </h4>
+            <p> Points coming soon! </p>
+        <% end %>
+    </div>
+
+    <%= form_for @supporter, url: { action: "create" } do |f| %>
+        <div class="field">
+            <%= f.label :"Add a supporter by email" %><br />
+            <%= f.email_field :supporter_id %><br />
+            <br />
+            <%= f.submit "Add supporter" %>
+        </div>
+    <% end %>
+</div>
+
+<!-- Script for showing and displaying Milestones -->
+<script>
+	positionMilestones();
+</script>
