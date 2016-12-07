@@ -1,4 +1,6 @@
 class MilestonesController < ApplicationController
+    before_filter :validate_user
+
     def new
         @milestone = Milestone.new
     end
@@ -7,14 +9,6 @@ class MilestonesController < ApplicationController
         Milestone.create(name: params[:milestone][:name], completed: false,
             milestone_track_id: params[:milestone][:track_id], progress: params[:milestone][:progress],
                 due: params[:milestone][:due])
-        redirect_to :back
-    end
-
-    def show
-        milestone = Milestone.find(params[:track_id], params[:milestone_id])
-        if (params[:name])
-            milestone.update name: params[:name]
-        end
         redirect_to :back
     end
 
@@ -41,6 +35,21 @@ class MilestonesController < ApplicationController
     def update_form
         @milestone = Milestone.find(params[:id])
         @user = @milestone.milestone_track.user
+#        render plain: current_user.inspect
+
         render :layout => false
     end
+
+
+    private
+        def validate_user
+            unless params[:id].present? == false
+                milestone = Milestone.find(params[:id])
+                milestone_owner = milestone.milestone_track.user_id
+                render nothing: true unless current_user.id == milestone_owner
+            else
+                milestone_track = MilestoneTrack.find(params[:milestone_track_id])
+                render nothing: true unless current_user.id == milestone_track.user_id
+            end
+        end
 end

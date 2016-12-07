@@ -1,4 +1,8 @@
 <div class="container">
+	<h2><%= @user.name %></h2>
+</div>
+
+<div class="container">
 	<h3>Recurring Goals</h3>
 	<div class="card">
 		<div class="row">
@@ -14,18 +18,20 @@
 			</div>
 		</div>
 	</div>
-	<%= form_for [@user, @recurring_goal] do |f| %>
+	<% if @user.id == current_user.id %>
+		<%= form_for [@user, @recurring_goal] do |f| %>
 
-		<div class="field">
-			<h4>Add Goal</h4>
-			<%= f.label :"Name of new Goal" %><br />
-			<%= f.text_field :name, required: true %>
-			<%= f.select :goal_type, ["Daily", "Weekly", "Monthly"] %>
-		</div>
+			<div class="field">
+				<h4>Add Goal</h4>
+				<%= f.label :"Name of new Goal" %><br />
+				<%= f.text_field :name, required: true %>
+				<%= f.select :goal_type, ["Daily", "Weekly", "Monthly"] %>
+			</div>
 
-		<div class="actions">
-			<%= f.submit "Create Daily Goal" %>
-		</div>
+			<div class="actions">
+				<%= f.submit "Create Daily Goal" %>
+			</div>
+		<% end %>
 	<% end %>
 </div>
 

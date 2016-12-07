@@ -8,8 +8,10 @@
 			    <% else %>
 			    	<span class="glyphicon glyphicon-ok btn-lg"></span>
 			    <% end %>
-			    <span class="glyphicon glyphicon-trash delete-button"> </span>
-				<span class="glyphicon glyphicon-pencil edit-button"> </span>
+				<% if @user.id == current_user.id %>
+			    	<span class="glyphicon glyphicon-trash delete-button"> </span>
+					<span class="glyphicon glyphicon-pencil edit-button"> </span>
+				<% end %>
 			</div>
 		</div>
 	<% end %>

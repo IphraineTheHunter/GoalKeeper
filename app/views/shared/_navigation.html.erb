@@ -5,7 +5,7 @@
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			<% if user_signed_in? %>
-				<li><a>
+				<li><a href="/users/<%= current_user.id %>">
 					Hello <%= current_user.name %>
 				</a><li>
 				<li>
@@ -25,7 +25,7 @@
 			<% if user_signed_in? %>
 				<li><a href="/users/<%= current_user.id %>" >Home</a><li>
 	    		<li><a href="/users/<%= current_user.id %>/milestone_tracks">Milestones</a></li>
-	    		<li><a href="#">Supporters (Coming Soon!)</a></li>
+	    		<li><a href="/users/<%= current_user.id %>/supporters">Supporters (Under Construction!)</a></li>
 			<% end %>
 		</ul>
 	</div>

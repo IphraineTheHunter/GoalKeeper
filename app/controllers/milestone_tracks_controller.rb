@@ -1,5 +1,5 @@
 class MilestoneTracksController < ApplicationController
-    before_action :authenticate_user!
+    before_filter :validate_user
 
     def index
       @user = User.find(params[:user_id])
@@ -12,12 +12,6 @@ class MilestoneTracksController < ApplicationController
         current_user.milestone_tracks.create(name: params[:milestone_track][:name],
             numeric_value: params[:milestone_track][:numeric_value], progress: 0)
         redirect_to :back
-    end
-
-    def update_progress
-        @milestone_track = MilestoneTrack.find(params[:id])
-        @user = @milestone_track.user
-        render :layout => false
     end
 
     def update
@@ -38,7 +32,6 @@ class MilestoneTracksController < ApplicationController
 
       milestone_track.save
       redirect_to :back
-#      render plain: params.inspect
     end
 
 
@@ -48,4 +41,22 @@ class MilestoneTracksController < ApplicationController
         @milestone = Milestone.new
         render :layout => false
     end
+
+    def update_progress
+        @milestone_track = MilestoneTrack.find(params[:id])
+        @user = @milestone_track.user
+        render :layout => false
+    end
+
+    private
+        def validate_user
+            if params[:action] == "update_progress"
+                milestone_track = MilestoneTrack.find(params[:id])
+                render nothing: true unless current_user.id == milestone_track.user_id
+            end
+            if params[:milestone_track_id].present?
+                milestone_track = MilestoneTrack.find(params[:milestone_track_id])
+                render nothing: true unless current_user.id == milestone_track.user_id
+            end
+        end
 end

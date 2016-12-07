@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :recurring_goals
     resources :milestone_tracks
     resources :milestones
-
+    resources :supporters
   end
 
   resources :recurring_goals do
@@ -23,6 +23,9 @@ Rails.application.routes.draw do
       resources :milestones
   end
 
+  resources :supporters do
+      resources :supporters
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

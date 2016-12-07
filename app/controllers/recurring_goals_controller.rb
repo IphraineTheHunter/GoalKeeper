@@ -1,4 +1,5 @@
 class RecurringGoalsController < ApplicationController
+    before_filter :validate_user
 
   def show
     goal = RecurringGoal.find(params[:id])
@@ -37,4 +38,14 @@ class RecurringGoalsController < ApplicationController
       render :layout => false
   end
 
+  private
+      def validate_user
+          unless params[:user_id].present?
+              recurring_goal = RecurringGoal.find(params[:id])
+              recurring_goal_owner = recurring_goal.user_id
+              render nothing: true unless current_user.id == recurring_goal_owner
+          else
+              render nothing: true unless current_user.id.to_s == params[:user_id]
+          end
+      end
 end
